@@ -1,0 +1,6 @@
+framework module Pods_beechat {
+  umbrella header "Pods-beechat-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,269 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 Monaco;
+\f3\fnil\fcharset0 Menlo-Bold;}
+{\colortbl;\red255\green255\blue255;\red0\green116\blue0;\red170\green13\blue145;\red92\green38\blue153;
+\red196\green26\blue22;\red46\green13\blue110;}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Hi\uc0\u7879 n t\u7841 i c\'f3 3 c\'e1ch \u273 \u7875  open View Controller (VC) kh\'e1c \
+
+\b 1. C\'e1ch 1
+\b0 : N\uc0\u7871 u VC1 \u273 ang embed trong navigation controller mu\u7889 n m\u7903   VC2 c\'f3 th\u7875  back v\u7873  th\'ec push VC2 v\'e0o navigation controller, l\'fac n\'e0y VC2 c\'f3 root view controller l\'e0 navigation controller\
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf2 \CocoaLigature0 VC1.navigationController?.pushViewController(vc, animated: true)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \CocoaLigature1 Tuy nhi\'ean c\'e1ch n\'e0y c\'f3 nh\uc0\u7919 ng h\u7841 n ch
+\f2 \uc0\u7871 
+\f1  nh\uc0\u432 :\cf2 \CocoaLigature0 \
+- \cf0 \CocoaLigature1 Neu 
+\f2 kh\uc0\u7903 i 
+\f1 t\uc0\u7841 o\cf2 \CocoaLigature0  \cf3 let\cf0  VC2 = \cf4 YourViewController (),\cf0 \CocoaLigature1 VC2 n
+\f2 \uc0\u7871 
+\f1 u c\'f3 c\'e1c\cf2 \CocoaLigature0  \cf3 @IBOutlet \cf0 \CocoaLigature1 th\'ec c\'f3 kh
+\f2 \uc0\u7843 
+\f1  n\uc0\u259 ng\cf3 \CocoaLigature0  \cf0 \CocoaLigature1 c\'e1c outlet control n\'e0y s\uc0\u7869  kh\'f4ng \u273 \u432 \u7907 c kh
+\f2 \uc0\u7903 
+\f1 i t\uc0\u7841 o, n
+\f2 \uc0\u7871 
+\f1 u VC2 ko c\'f3 outlet control n\'e0o th\'ec OK. Gi
+\f2 \uc0\u7889 
+\f1 ng nh\uc0\u432  ChatViewControl \u273 \u432 \u7907 c push t\u7915  RecentViewController, ChatViewControl trong storyboard ko c\'f3 control n\'e0o. \
+\
+- Do \uc0\u273 \'f3 trong tr\u432 \u7901 ng h\u7907 p VC2 c\'f3 control IBOutlet th\'ec ph
+\f2 \uc0\u7843 
+\f1 i 
+\f2 kh\uc0\u7903 i 
+\f1 t\uc0\u7841 o View Controller t\u7915  storyboard nh\u432  sau\
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+\cf3 \CocoaLigature0 let\cf0  viewcontroller = \cf4 UIStoryboard\cf0 (name: \cf5 "Main"\cf0 , bundle: \cf3 nil\cf0 ).\cf6 instantiateViewController\cf0 (withIdentifier: \cf5 "ChatVC"\cf0 ) \cf3 as\cf0 ! \cf4 YourViewController\cf0 \CocoaLigature1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf3 \CocoaLigature0 \
+\cf0 \CocoaLigature1 - M\uc0\u7897 t v
+\f2 \uc0\u7845 
+\f1 n \uc0\u273 
+\f2 \uc0\u7873 
+\f1  n\uc0\u7919 a l\'e0 t\u7915  ChatViewController t\u7899 i MapViewController c\'f3 segue t\'ean "chatToMapSeg", khi \u273 \'f3 mu
+\f2 \uc0\u7889 
+\f1 n m
+\f2 \uc0\u7903 
+\f1  MapViewController t\uc0\u7915  ChatViewController b\u7857 ng c\'e1ch 
+\f2 perform 
+\f1 segues \cf3 \CocoaLigature0 \
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+\cf2 self.performSegue(withIdentifier: "chatToMapSeg", sender: indexPath)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \CocoaLigature1 N\'f3 s\uc0\u7869  b\'e1o l
+\f2 \uc0\u7895 
+\f1 i ko t\'ecm th
+\f2 \uc0\u7845 
+\f1 y segue\cf3 \CocoaLigature0  "\cf2 chatToMapSeg" 
+\f2 \cf0 \CocoaLigature1 B\uc0\u7903 i 
+\f1 v\'ec l\'fac n\'e0y\cf2 \CocoaLigature0  \cf0 \CocoaLigature1 ChatViewController \uc0\u273 \u432 \u7907 c push v\'e0o root view 
+\f0\fs24 navigation controller, n\'ean segue ph\uc0\u7843 i connect t\u7915  navigation controller t\u7899 i MapViewController. V\'e0 trong 
+\f1\fs22 ChatViewController 
+\f0\fs24 ph\uc0\u7843 i g\u7885 i nh\u432  sau th\'ec m\u7899 i th\u7921 c hi\u7879 n dc \
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+
+\f1\fs22 \cf2 \CocoaLigature0 self.navigationController?.performSegue(withIdentifier: "chatToMapSeg", sender: indexPath)\
+V\'e0 khi \uc0\u273 \'f3 function\
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+\cf3 override\cf0  \cf3 func\cf0  prepare(for segue: \cf4 UIStoryboardSegue\cf0 , sender: \cf4 AnyObject\cf0 ?)\
+ph
+\f2 \uc0\u7843 
+\f1 i \uc0\u273 \u432 \u7907 c implement trong root view 
+\f0\fs24 \CocoaLigature1 navigation controller  m\uc0\u7899 i \u273 \u432 \u7907 c. V\'ec ch\'ednh root view th\u7921 c hi\u7879 n Segue n\'e0y.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f3\b\fs22 \cf0 2. C\'e1ch 2
+\f1\b0 : VC1 m
+\f2 \uc0\u7903 
+\f1  VC2 d\uc0\u7841 ng Modally. b\u7857 ng c\'e1ch g\u7885 i \
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+\cf3 \CocoaLigature0 VC1\cf0 .\cf6 present\cf0 (VC2, animated: \cf3 true\cf0 , completion: \cf3 nil\cf0 )\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \CocoaLigature1 Tuy nhi\'ean c\'e1ch n\'e0y c\'f3 nh\uc0\u7919 ng h\u7841 n ch
+\f2 \uc0\u7871 
+\f1  nh\uc0\u432 :\cf3 \CocoaLigature0 \
+\cf2 - \cf0 \CocoaLigature1 Neu 
+\f2 kh\uc0\u7903 i 
+\f1 t\uc0\u7841 o\cf2 \CocoaLigature0  \cf3 let\cf0  VC2 = \cf4 YourViewController (), \cf0 \CocoaLigature1 VC2 n
+\f2 \uc0\u7871 
+\f1 u c\'f3 c\'e1c\cf2 \CocoaLigature0  \cf3 @IBOutlet \cf0 \CocoaLigature1 th\'ec c\'f3 kh
+\f2 \uc0\u7843 
+\f1  n\uc0\u259 ng\cf3 \CocoaLigature0  \cf0 \CocoaLigature1 c\'e1c outlet control n\'e0y s\uc0\u7869  kh\'f4ng \u273 \u432 \u7907 c kh
+\f2 \uc0\u7903 
+\f1 i t\uc0\u7841 o, n
+\f2 \uc0\u7871 
+\f1 u VC2 ko c\'f3 outlet control n\'e0o th\'ec OK. Gi
+\f2 \uc0\u7889 
+\f1 ng nh\uc0\u432  ChatViewControl \u273 \u432 \u7907 c push t\u7915  RecentViewController, ChatViewControl trong storyboard ko c\'f3 control n\'e0o.\
+\
+- Do \uc0\u273 \'f3 trong tr\u432 \u7901 ng h\u7907 p VC2 c\'f3 control IBOutlet th\'ec ph
+\f2 \uc0\u7843 
+\f1 i 
+\f2 kh\uc0\u7903 i 
+\f1 t\uc0\u7841 o View Controller t\u7915  storyboard nh\u432  sau\
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+\cf3 \CocoaLigature0 let\cf0  VC2 = \cf4 UIStoryboard\cf0 (name: \cf5 "Main"\cf0 , bundle: \cf3 nil\cf0 ).\cf6 instantiateViewController\cf0 (withIdentifier: \cf5 "ChatVC Story 
+\f2 Board 
+\f1 Identity"\cf0 ) \cf3 as\cf0 ! \cf4 YourViewController\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f3\b \cf0 \CocoaLigature1 3. C\'e1ch 3
+\f1\b0 : Th\uc0\u7921 c hi\u7879 n segue \u273 
+\f2 \uc0\u7875 
+\f1  
+\f2 chuy\uc0\u7875 n 
+\f1 t\uc0\u7915  VC1 sang VC2\cf4 \CocoaLigature0 \
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+\cf2 VC1.performSegue(withIdentifier: "VC1ToVC2Seg", sender: indexPath)\
+Nh\uc0\u432 ng 
+\f2 ph\uc0\u7843 i 
+\f1 \uc0\u273 
+\f2 \uc0\u7843 
+\f1 m b
+\f2 \uc0\u7843 
+\f1 o VC1 
+\f2 \uc0\u7903  
+\f1 \uc0\u273 \'e2y t\'ecm th
+\f2 \uc0\u7845 
+\f1 y segue id "VC1ToVC2Seg" \uc0\u273 
+\f2 \uc0\u7875 
+\f1  ko b\uc0\u7883  l
+\f2 \uc0\u7895 
+\f1 i nh\uc0\u432  
+\f2 \uc0\u7903  
+\f1 c\'e1ch 1\cf4 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \CocoaLigature1 PUSH NOTIFICATION\cf4 \CocoaLigature0  \
+\cf0 \CocoaLigature1 \uc0\u272 
+\f2 \uc0\u7875 
+\f1  c\'f3 th
+\f2 \uc0\u7875 
+\f1  d\'f9ng push notification tr\'ean ios c
+\f2 \uc0\u7847 
+\f1 n t\'e0i kho
+\f2 \uc0\u7843 
+\f1 n developer c
+\f2 \uc0\u7911 
+\f1 a apple\
+1. login v\'e0o member center, add app id v\'e0o , nh\uc0\u7899  check ch\u7885 n Push Notification \
+2. T\uc0\u7841 o 
+\f2 Certificate 
+\f1 Signing Request (CSR) t\uc0\u7915  Keychain Access\
+3. Generate and SSL 
+\f2 Certificate 
+\f1 d\'f9ng cho Apple Push Notification 
+\f2 service
+\f1 \
+4. Download file 
+\f2 cer \uc0\u7903  
+\f1 m\uc0\u7909 c 3 v
+\f2 \uc0\u7873 
+\f1  add v\'e0o keychain v\'e0 export ra file format *.p12\
+5. D\'f9ng file n\'e0y \uc0\u273 
+\f2 \uc0\u7875 
+\f1  cho backendless c\'f3 th
+\f2 \uc0\u7875 
+\f1  send push cho app\
+Tham kh
+\f2 \uc0\u7843 
+\f1 o chi ti
+\f2 \uc0\u7871 
+\f1 t 
+\f2 \uc0\u7903  
+\f1 \uc0\u273 \'e2y :{\field{\*\fldinst{HYPERLINK "https://backendless.com/documentation/messaging/ios/messaging_push_notification_setup_ios.htm"}}{\fldrslt https://backendless.com/documentation/messaging/ios/messaging_push_notification_setup_ios.htm}}\
+\
+Ch\'fa \'fd gi\uc0\u7901  \u273 \'e2y ch
+\f2 \uc0\u7881 
+\f1  c
+\f2 \uc0\u7847 
+\f1 n c\'f3 apple id l\'e0 c\'f3 th
+\f2 \uc0\u7875 
+\f1  tr
+\f2 \uc0\u7903 
+\f1  th\'e0nh ios developer v\'e0 \uc0\u273 \u432 \u7907 c apple sinh ra file provisioning profile d\'f9ng cho m\u7885 i app \u273 
+\f2 \uc0\u7875 
+\f1  c\'e0i l\'ean m\uc0\u7885 i device, ko c
+\f2 \uc0\u7847 
+\f1 n ph
+\f2 \uc0\u7843 
+\f1 i mua apple developer program n\uc0\u7919 a. Tuy nhi\'ean \u273 
+\f2 \uc0\u7875 
+\f1  s\'e0i nh\uc0\u7919 ng 
+\f2 service 
+\f1 nh\uc0\u432  apple push notification \u273 \'f2i h
+\f2 \uc0\u7887 
+\f1 i ph
+\f2 \uc0\u7843 
+\f1 i mua m\uc0\u7899 i sinh ra dc file 
+\f2 cer 
+\f1 (
+\f2 \uc0\u7903  
+\f1 m\uc0\u7909 c 3).\
+Tuy nhi\'ean n
+\f2 \uc0\u7871 
+\f1 u \uc0\u273 \'e3 c\'f3 mua apple developer program r
+\f2 \uc0\u7891 
+\f1 i th\'ec c\'f3 th
+\f2 \uc0\u7875 
+\f1  sinh ra file provisioning profile cho nh\uc0\u7919 ng m\u7909 c \u273 \'edch nh\u432  sau:\
+App build ch
+\f2 \uc0\u7881 
+\f1  mu
+\f2 \uc0\u7889 
+\f1 n cho 1 s
+\f2 \uc0\u7889 
+\f1  device nh
+\f2 \uc0\u7845 
+\f1 t \uc0\u273 \u7883 nh, device kh\'e1c d\'f9 c\'f3 app v
+\f2 \uc0\u7851 
+\f1 n ko s\'e0i \uc0\u273 \u432 \u7907 c. Khi \u273 \'f3 c
+\f2 \uc0\u7847 
+\f1 n t\uc0\u7841 o provisioning development v\u7899 i c\'e1c device \u273 \u432 \u7907 c ch\u7885 n, sau \u273 \'f3 download file provisioning v
+\f2 \uc0\u7873 
+\f1 , build sign v\uc0\u7899 i provisioning profile  \
+\
+hi\uc0\u7879 n t\u7841 i login fb s\u7869  
+\f2 direct 
+\f1 qua safari, sau \uc0\u273 \'f3 user press cancel 
+\f2 or ok 
+\f1 n\'f3 s\uc0\u7869  show popup h
+\f2 \uc0\u7887 i 
+\f1 "open this page in beeschat". L\'e0m c\'e1ch n\'e0o \uc0\u273 
+\f2 \uc0\u7875 
+\f1  \uc0\u273 \u7915 ng cho n\'f3 h
+\f2 \uc0\u7887 
+\f1 i popup \uc0\u273 \'f3 m\'e0 open app beeschat lu\'f4n. Xem flow login \u273 ay\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://developers.facebook.com/blog/post/2015/10/29/Facebook-Login-iOS9/"}}{\fldrslt \cf0 https://developers.facebook.com/blog/post/2015/10/29/Facebook-Login-iOS9/}}\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+FIREBASE ERROR AT START\
+\pard\tx543\pardeftab543\pardirnatural\partightenfactor0
+
+\f3\b \cf0 \CocoaLigature0 2016-09-07 18:19:58.127 beechat[1528:1107863] Configuring the default app.\
+2016-09-07 18:19:58.214: <FIRInstanceID/WARNING> FIRInstanceID AppDelegate proxy enabled, will swizzle app delegate remote notification handlers. To disable add "FirebaseAppDelegateProxyEnabled" to your Info.plist and set it to NO\
+2016-09-07 18:19:58.284 beechat[1528:] <FIRAnalytics/INFO> Firebase Analytics v.3301000 started\
+2016-09-07 18:19:58.286 beechat[1528:] <FIRAnalytics/INFO> To enable debug logging set the following application argument: -FIRAnalyticsDebugEnabled (see http://goo.gl/Y0Yjwu)\
+2016-09-07 18:20:06.807 beechat[1528:] <FIRAnalytics/INFO> Successfully created Firebase Analytics App Delegate Proxy automatically. To disable the proxy, set the flag FirebaseAppDelegateProxyEnabled to NO in the Info.plist\
+2016-09-07 18:20:07.344 beechat[1528:] <FIRAnalytics/INFO> Firebase Analytics enabled\
+2016-09-07 18:20:08.503 beechat[1528:1107981] CFNetwork SSLHandshake failed (-9806)\
+2016-09-07 18:20:08.506 beechat[1528:1107981] NSURLSession/NSURLConnection HTTP load failed (kCFStreamErrorDomainSSL, -9806)\
+2016-09-07 18:20:08.525 beechat[1528:1107863] <Firebase/Network/ERROR> Encounter network error. Error: Error Domain=NSURLErrorDomain Code=-1200 "An SSL error has occurred and a secure connection to the server cannot be made." UserInfo=\{NSLocalizedDescription=An SSL error has occurred and a secure connection to the server cannot be made., NSLocalizedRecoverySuggestion=Would you like to connect to the server anyway?, _kCFStreamErrorDomainKey=3, NSUnderlyingError=0x15627570 \{Error Domain=kCFErrorDomainCFNetwork Code=-1200 "(null)" UserInfo=\{_kCFStreamPropertySSLClientCertificateState=0, _kCFNetworkCFStreamSSLErrorOriginalValue=-9806, _kCFStreamErrorCodeKey=-9806, _kCFStreamErrorDomainKey=3, kCFStreamPropertySSLPeerTrust=<SecTrustRef: 0x1560f700>, kCFStreamPropertySSLPeerCertificates=<CFArray 0x1561e7c0 [0x3a293840]>\{type = immutable, count = 3, values = (\
+	0 : <cert(0x15749fa0) s: *.googleapis.com i: Google Internet Authority G2>\
+	1 : <cert(0x1574a430) s: Google Internet Authority G2 i: GeoTrust Global CA>\
+	2 : <cert(0x1574de60) s: GeoTrust Global CA i: Equifax Secure Certificate Authority>\
+)\}\}\}, _kCFStreamErrorCodeKey=-9806, NSErrorFailingURLStringKey=https://play.googleapis.com/log, NSErrorPeerCertificateChainKey=<CFArray 0x1561e7c0 [0x3a293840]>\{type = immutable, count = 3, values = (\
+	0 : <cert(0x15749fa0) s: *.googleapis.com i: Google Internet Authority G2>\
+	1 : <cert(0x1574a430) s: Google Internet Authority G2 i: GeoTrust Global CA>\
+	2 : <cert(0x1574de60) s: GeoTrust Global CA i: Equifax Secure Certificate Authority>\
+)\}, NSErrorClientCertificateStateKey=0, NSURLErrorFailingURLPeerTrustErrorKey=<SecTrustRef: 0x1560f700>, NSErrorFailingURLKey=https://play.googleapis.com/log\}\
+}
